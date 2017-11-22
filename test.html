@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS Test</title>
+</head>
+<body>
+123
+</body>
+<script>
+    function ListNode(val){
+        this.val = val;
+        this.next = null;
+    }
+
+    var addTwoNumbers = function(l1, l2) {
+        var headNode = null;
+        var num1 ,num2 ,sum ;
+        var carryNum = 0;
+        var list;
+        do{
+            num1 = l1? l1.val: 0;
+            num2 = l2? l2.val: 0;
+            sum = num1 + num2 + carryNum;
+
+            carryNum = sum >= 10? 1:0;
+            if(headNode == null){
+               list = headNode = new ListNode(sum%10);
+            }else{
+                headNode.next = new ListNode(sum%10);
+                headNode = headNode.next;
+            }
+
+                if(l1 != undefined){
+                    l1 = l1.next;
+                }
+
+            if(l2 != undefined){
+                l2 = l2.next;
+            }
+
+
+        } while (l1 != undefined || l2 != undefined || carryNum == 1);
+
+        return  list;
+    };
+    window.onload = function () {
+
+//         var l1 = new ListNode(1);
+//
+//          l1.next = new ListNode(2);
+//        console.log(l1);
+//          var l2 = new ListNode(3);
+//          l2.next = new ListNode(4);
+//          l2.next.next= new ListNode(5);
+//          console.log(l2);
+        var l1 = new ListNode(5);
+        var l2 = new ListNode(5);
+          var l3 = addTwoNumbers(l1,l2);
+          console.log(l3);
+    }
+</script>
+</html>
